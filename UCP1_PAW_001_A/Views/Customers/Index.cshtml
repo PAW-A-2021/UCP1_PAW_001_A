@@ -1,0 +1,66 @@
+﻿@model IEnumerable<UCP1_PAW_001_A.Models.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<p>Ketersediaan : <select></select> Cari Data : <input /><button>Filter</button></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Nama Customer")
+            </th>
+            <th>
+                @Html.DisplayName("No.Hp")
+            </th>
+            <th>
+                @Html.DisplayName("Alamat")
+            </th>
+            <th>
+                @Html.DisplayName("Umur")
+            </th>
+            <th>
+                @Html.DisplayName("ID Peminjaman")
+            </th>
+            <th>
+                @Html.DisplayName("Pembayaran")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamaCustomer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoHp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alamat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Umur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPeminjaman)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPembayaranNavigation.JenisPembayaran)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdCustomer"><i class="fa fa-marker fa-lg"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.IdCustomer"><i class="fas fa-list fa-lg"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.IdCustomer"><i class="fa fa-trash-alt fa-lg"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

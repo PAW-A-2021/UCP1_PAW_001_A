@@ -1,0 +1,49 @@
+﻿@model UCP1_PAW_001_A.Models.Peminjaman
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Peminjaman</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdPeminjaman" />
+            <div class="form-group">
+                <label asp-for="TanggalPeminjaman" class="control-label"></label>
+                <input asp-for="TanggalPeminjaman" class="form-control" />
+                <span asp-validation-for="TanggalPeminjaman" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdMobil" class="control-label"></label>
+                <select asp-for="IdMobil" class="form-control" asp-items="ViewBag.IdMobil"></select>
+                <span asp-validation-for="IdMobil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCustomer" class="control-label"></label>
+                <select asp-for="IdCustomer" class="form-control" asp-items="ViewBag.IdCustomer"></select>
+                <span asp-validation-for="IdCustomer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalPembayaran" class="control-label"></label>
+                <input asp-for="TotalPembayaran" class="form-control" />
+                <span asp-validation-for="TotalPembayaran" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
